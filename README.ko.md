@@ -86,7 +86,8 @@ State에는 횟수와 코드만 담고 요청 원문·예외 메시지는 담지
 2. 같은 자리에 모델 노드: 로컬 모델로 계획·추출·작성 구조화 출력. 외부 모델은 마스킹 후, 허용한 경우에만.
 3. 도메인 팩: 법률·의료 필터와 각자의 합성 문항·안전 지표, 이어서 로컬 행정.
 4. 보드에 실제 모델 기준선: 같은 문항, 같은 토큰 계산으로 단일 요약과 그래프 비교.
-5. LangGraph 기능 실험: 병렬 분기(`Send`), 체크포인트·사람 확인(`interrupt`), 도메인별 서브그래프.
+5. 계측 보드: 실행 궤적·비용·환각 방어·레이턴시 4패널을 하나의 이벤트 스키마로, [설계](docs/METRICS_BOARD.ko.md).
+6. LangGraph 기능 실험: 병렬 분기(`Send`), 체크포인트·사람 확인(`interrupt`), 도메인별 서브그래프.
 
 ## 원칙
 
@@ -95,4 +96,5 @@ State에는 횟수와 코드만 담고 요청 원문·예외 메시지는 담지
 ## 설계 노트
 
 - 필터 설계 브레인스토밍: [한국어](docs/brainstorm/FILTER_BRAINSTORM.ko.md) · [English](docs/brainstorm/FILTER_BRAINSTORM.en.md) · [PDF, 다크](docs/brainstorm/FILTER_BRAINSTORM_dark.pdf)
+- 계측 보드(4대 지표 + 이벤트 스키마): [한국어](docs/METRICS_BOARD.ko.md) · [English](docs/METRICS_BOARD.en.md)
 - 이전 계획: [docs/MIGRATION_PLAN.md](docs/MIGRATION_PLAN.md)

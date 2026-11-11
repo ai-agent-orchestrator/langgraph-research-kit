@@ -135,7 +135,8 @@ print(result.report, result.verify_codes, result.shadow_tokens)
 2. Model nodes behind the same slots: structured-output plan / extract / write with a local model; outside models only on masked text and only if allowed.
 3. Domain packs: legal and medical filters with their own synthetic cases and safety metrics; local administration next.
 4. Real-model baseline on the board: one-shot summary vs the graph, same cases, same token accounting.
-5. LangGraph features as experiments: parallel branches (`Send`), checkpoints and human review (`interrupt`), subgraphs per domain.
+5. Metrics board: four panels (workflow trace, cost control, guardrail audit, latency) on one event schema, see [design](docs/METRICS_BOARD.en.md).
+6. LangGraph features as experiments: parallel branches (`Send`), checkpoints and human review (`interrupt`), subgraphs per domain.
 
 ## Principles
 
@@ -145,4 +146,5 @@ claims measured rather than asserted.
 ## Design notes
 
 - Filter design brainstorm: [English](docs/brainstorm/FILTER_BRAINSTORM.en.md) · [한국어](docs/brainstorm/FILTER_BRAINSTORM.ko.md) · [PDF, dark](docs/brainstorm/FILTER_BRAINSTORM_dark.pdf)
+- Metrics board (4 panels + event schema): [English](docs/METRICS_BOARD.en.md) · [한국어](docs/METRICS_BOARD.ko.md)
 - Migration plan: [docs/MIGRATION_PLAN.md](docs/MIGRATION_PLAN.md)

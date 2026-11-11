@@ -143,3 +143,16 @@ Suggested order: fault injector → four-number board → legal/medical gold set
 - Judging alone, or one domain expert (lawyer, physician) reviewing each?
 - Going public: research scorecard first, or wait for legal and medical?
 - Selling filters: licence per domain pack, or a service that includes the tuning board?
+
+## 10. Metrics board: four panels and an event schema
+
+To tune 3–5 domain pipelines from data (Data-Driven Harness Tuning), the board must show internal state, loop counts, token cost and hallucination blocks live. The unit is one `run_id` event across the Spring Boot — FastAPI — LangGraph stack.
+
+| Panel | Measured | Used for |
+|---|---|---|
+| 1. Workflow trace | Path retrieve→grade→rewrite…; end type END / give_up / cutoff | See which questions loop in rewrite; tune retrieval and grading |
+| 2. Cost control | Calls per model (SLM judge vs flagship writer), input/output tokens, cost per run (KRW) | Watch the cost target (e.g. 1.5 KRW); set the Fast/Deep Track routing ratio |
+| 3. Guardrail audit | RelevanceGrade drop rate, GroundedGrade rejection reasons | Diagnose number/article errors per domain; catch over-strict graders |
+| 4. Latency | Per-node ms (retrieve, abatch grading, generate), TTFT | Find the bottleneck; parallelise or swap in a lighter model |
+
+Full schema: `docs/METRICS_BOARD.en.md`
