@@ -141,3 +141,8 @@ print(result.report, result.verify_codes, result.shadow_tokens)
 
 Local first, no tracing uploads from serving code, synthetic data only in this repository, every rule versioned,
 claims measured rather than asserted.
+
+## Design notes
+
+- Filter design brainstorm: [English](docs/brainstorm/FILTER_BRAINSTORM.en.md) · [한국어](docs/brainstorm/FILTER_BRAINSTORM.ko.md) · [PDF, dark](docs/brainstorm/FILTER_BRAINSTORM_dark.pdf)
+- Migration plan: [docs/MIGRATION_PLAN.md](docs/MIGRATION_PLAN.md)

@@ -91,3 +91,8 @@ State에는 횟수와 코드만 담고 요청 원문·예외 메시지는 담지
 ## 원칙
 
 로컬 우선, 서비스 코드에서 tracing 업로드 없음, 이 레포에는 합성 데이터만, 규칙은 모두 버전 관리, 주장은 측정으로.
+
+## 설계 노트
+
+- 필터 설계 브레인스토밍: [한국어](docs/brainstorm/FILTER_BRAINSTORM.ko.md) · [English](docs/brainstorm/FILTER_BRAINSTORM.en.md) · [PDF, 다크](docs/brainstorm/FILTER_BRAINSTORM_dark.pdf)
+- 이전 계획: [docs/MIGRATION_PLAN.md](docs/MIGRATION_PLAN.md)
