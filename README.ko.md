@@ -20,6 +20,26 @@ AI가 바로 답하게 두지 않습니다. 모든 요청은 **분류 → 로컬
 | 주류 의견 위주의 일반론 | 조건부 엣지로 반대 근거·한계를 따로 찾게 강제 |
 | 일부가 부실하면 전부 다시 | 검수가 빠진 지표만 검색으로, 문장 문제만 작성으로 되돌림 |
 
+## 바깥 레일: LangGraph 가드레일
+
+모든 요청은 바깥 `StateGraph` 하나 안에서 돕니다. RAG나 리서치 파이프라인은 독립 노드 하나이고, 나머지는 엣지가 정합니다.
+
+```text
+START → classify ──research──→ rag ──route_by_cost_and_health──→ finish → END
+           │                    ├──retry (일시 장애, max_loops 이내)──→ rag
+           └──smalltalk──→ finish └──kill (반복 한도 / 비용 한도 / 노드 오류) → END
+```
+
+| 부분 | 역할 | 기본값 |
+| --- | --- | --- |
+| `classify` (제1관문) | 리서치/잡담 분류. 기본은 규칙 라우터, 구조화 출력 라우터는 마스킹된 텍스트만 봄 | 외부 전송 없음 |
+| `rag` (메인 노드) | 파이프라인 그대로. 자체 입력 정책·마스킹·"근거 없으면 생성 0회" 유지 | — |
+| `route_by_cost_and_health` (제2관문) | 순수 Python. 일시 장애만 재시도, 노드 오류·반복 한도·비용 한도면 중단 | `max_loops=3`, `max_cost=15` |
+| `screen` / `verify` | 도메인 필터를 끼우면 추가되는 관문 | `max_verify_rounds=2` |
+
+State에는 횟수와 코드만 담고 요청 원문·예외 메시지는 담지 않습니다. 모든 실행은 tracing 업로드 차단 안에서 돕니다.
+현재 코드: 원 레포의 `rag/guardrail_graph.py`.
+
 ## 구조
 
 ```text

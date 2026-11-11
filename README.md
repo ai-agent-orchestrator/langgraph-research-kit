@@ -27,6 +27,27 @@ information travels. This kit fixes the path:
 | mainstream, generic conclusion | conditional edges force a separate search for counter-evidence and limits |
 | weak part → rerun everything | the verifier sends only the missing metric back to retrieval, or only the prose back to the writer |
 
+## The outer rail: LangGraph guardrail
+
+Every request runs inside one outer `StateGraph`. The RAG or research pipeline is a single isolated node; the edges decide
+everything else.
+
+```text
+START → classify ──research──→ rag ──route_by_cost_and_health──→ finish → END
+           │                    ├──retry (transient failure, ≤ max_loops)──→ rag
+           └──smalltalk──→ finish └──kill (loop limit / cost limit / node error) → END
+```
+
+| Part | Role | Default |
+| --- | --- | --- |
+| `classify` (gate 1) | research or small talk; rule router by default, structured-output router on masked text only | no network |
+| `rag` (main node) | the pipeline, untouched; its own input policy, masking and "no evidence = no generation" rule still run | — |
+| `route_by_cost_and_health` (gate 2) | pure Python: retry only transient failures, kill on node error, loop limit or cost limit | `max_loops=3`, `max_cost=15` |
+| `screen` / `verify` | domain filter gates added when a `DomainFilter` is plugged in | `max_verify_rounds=2` |
+
+State holds counters and codes, never request text or exception messages; every run is wrapped in a no-upload tracing
+guard. Code today: `rag/guardrail_graph.py` in the source repo.
+
 ## How it works
 
 ```text
