@@ -11,6 +11,7 @@
 
 ## Update 2026-11-14
 
-Steps 2 and 3 are cancelled for this repository. The implementation (research graph, domain filters, eval runner and
-board, model nodes) moves to a private repository instead. This public repository keeps the concept, the board design
-and the first synthetic measurements as they were published.
+Steps 2 and 3 are replaced. The **open engine** is built in this repository: context-grouped summaries (vector DB),
+a two-branch summary checker (vector similarity in parallel with token-surprisal anchors, after LLMLingua) and an
+extractive fallback, with synthetic examples only. Domain rule packs, domain filters, tuned thresholds and real data
+stay in a private repository.
