@@ -1,8 +1,9 @@
 # langgraph-research-kit
 
-> **Status: draft.** The code is moving here from
-> [langchain-rag-research-agent](https://github.com/ai-agent-orchestrator/langchain-rag-research-agent) (planned 2026-11-12).
-> This README describes the concept and the parts that already run there.
+> **Status: concept and plan (updated 2026-11-14).** The open engine will be built here: context-grouped summaries
+> (vector DB), a two-branch summary checker (vector similarity in parallel with token-surprisal anchors) and an
+> extractive fallback, with synthetic examples. Domain rule packs, domain filters, tuned thresholds and real data
+> stay private.
 
 **A pluggable LangGraph research module with its own evaluation board.**
 It never lets a model answer straight away: every request goes **route → local retrieval → rule filter**, and research
@@ -131,7 +132,7 @@ print(result.report, result.verify_codes, result.shadow_tokens)
 
 ## Roadmap
 
-1. Move the code with history; package as `langgraph_research_kit`; tests and board run from this repo alone.
+1. Open engine here (changed 2026-11-14): context-grouped summaries + two-branch checker + extractive fallback. Domain packs and tuning stay private.
 2. Model nodes behind the same slots: structured-output plan / extract / write with a local model; outside models only on masked text and only if allowed.
 3. Domain packs: legal and medical filters with their own synthetic cases and safety metrics; local administration next.
 4. Real-model baseline on the board: one-shot summary vs the graph, same cases, same token accounting.

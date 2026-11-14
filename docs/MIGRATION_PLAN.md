@@ -8,3 +8,10 @@
    install, test and build the board.
 3. **Then:** `langchain-rag-research-agent` depends on this kit (pinned commit) and keeps its old public names as
    re-exports, so existing code and tests keep working.
+
+## Update 2026-11-14
+
+Steps 2 and 3 are replaced. The **open engine** is built in this repository: context-grouped summaries (vector DB),
+a two-branch summary checker (vector similarity in parallel with token-surprisal anchors, after LLMLingua) and an
+extractive fallback, with synthetic examples only. Domain rule packs, domain filters, tuned thresholds and real data
+stay in a private repository.
