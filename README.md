@@ -1,8 +1,8 @@
 # langgraph-research-kit
 
-> **Status: draft.** The code is moving here from
-> [langchain-rag-research-agent](https://github.com/ai-agent-orchestrator/langchain-rag-research-agent) (planned 2026-11-12).
-> This README describes the concept and the parts that already run there.
+> **Status: concept and plan (updated 2026-11-14).** This public repository documents the concept, the board design
+> and the first synthetic measurements. Implementation (domain filters, board code, model nodes) continues in a private
+> repository and is not published here.
 
 **A pluggable LangGraph research module with its own evaluation board.**
 It never lets a model answer straight away: every request goes **route → local retrieval → rule filter**, and research
@@ -131,7 +131,7 @@ print(result.report, result.verify_codes, result.shadow_tokens)
 
 ## Roadmap
 
-1. Move the code with history; package as `langgraph_research_kit`; tests and board run from this repo alone.
+1. ~~Move the code here~~ (changed 2026-11-14: implementation continues privately; this repo keeps the concept and plan).
 2. Model nodes behind the same slots: structured-output plan / extract / write with a local model; outside models only on masked text and only if allowed.
 3. Domain packs: legal and medical filters with their own synthetic cases and safety metrics; local administration next.
 4. Real-model baseline on the board: one-shot summary vs the graph, same cases, same token accounting.

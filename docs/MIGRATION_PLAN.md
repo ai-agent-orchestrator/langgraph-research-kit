@@ -8,3 +8,9 @@
    install, test and build the board.
 3. **Then:** `langchain-rag-research-agent` depends on this kit (pinned commit) and keeps its old public names as
    re-exports, so existing code and tests keep working.
+
+## Update 2026-11-14
+
+Steps 2 and 3 are cancelled for this repository. The implementation (research graph, domain filters, eval runner and
+board, model nodes) moves to a private repository instead. This public repository keeps the concept, the board design
+and the first synthetic measurements as they were published.
